@@ -1,3 +1,6 @@
+import { MuiTheme } from '@/mui/theme';
+import { ThemeProvider } from '@mui/material';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -13,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ja'>
-      <body>{children}</body>
+      <body>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={MuiTheme}>{children}</ThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }
